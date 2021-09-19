@@ -1,4 +1,4 @@
-# Traffic Engineering with Joint Link Weight and Segment Optimization &ndash; Experiments
+# Traffic Engineering with Joint Link Weight and Segment Optimization &ndash; Source code for test bed evaluation
 ## Overview
 This repository contains the code for running the experiments that are presented within the publication **Traffic Engineering with Joint Link Weight and Segment Optimization**. Please also note [our website](https://whatif-tools.net/segment-routing/).
 
