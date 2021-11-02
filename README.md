@@ -111,3 +111,9 @@ This provides the Nanonet input file.
 This provides the bash script. 
 
 6. Execute the bash script. See the section above, "Run the test scripts directly", for this.
+
+<p float="left”>
+  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_available_v1_1.png" width="150" /></a>
+  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_evaluated_functional_v1_1.png" width="150" /></a>
+  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_evaluated_reusable_v1_1.png" width="150" /></a>
+</p>
