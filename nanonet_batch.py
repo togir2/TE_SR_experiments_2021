@@ -34,7 +34,7 @@ class Tests:
 	# Read the JSON file and fill the self.CAPACITY matrix.
 	def read_json(self, test_name : str):
 		json_filename = self.JSON_FILES[self.TESTFILES.index(test_name)]
-		with open('../' + json_filename) as json_file:
+		with open('../json/' + json_filename) as json_file:
 			data = json.load(json_file)
 		links = data['links']
 		for e in links:
