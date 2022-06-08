@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 from node import *
 
-class SimpleJointHand(Topo):
+class Joint(Topo):
     def build(self):
         self.add_node("0")
         self.add_node("1")
@@ -13,28 +13,28 @@ class SimpleJointHand(Topo):
         self.add_node("12")
         self.add_node("13")
         self.add_node("14")
-        self.add_link_name("0", "1", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("1", "0", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("1", "2", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("2", "1", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("2", "3", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("3", "2", cost=1000, delay=0.2, bw=4000000000000, directed=True)
-        self.add_link_name("0", "4", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("4", "0", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("1", "4", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("4", "1", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("2", "4", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("4", "2", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("3", "4", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("4", "3", cost=4000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("11", "0", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("12", "0", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("13", "0", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("14", "0", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("0", "11", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("0", "12", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("0", "13", cost=1000, delay=0.2, bw=1000000000000, directed=True)
-        self.add_link_name("0", "14", cost=1000, delay=0.2, bw=1000000000000, directed=True)
+        self.add_link_name("0", "1", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("1", "0", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("1", "2", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("2", "1", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("2", "3", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("3", "2", cost=1000, delay=0.2, bw=40000, directed=True)
+        self.add_link_name("0", "4", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("4", "0", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("1", "4", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("4", "1", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("2", "4", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("4", "2", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("3", "4", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("4", "3", cost=4000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("11", "0", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("12", "0", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("13", "0", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("14", "0", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("0", "11", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("0", "12", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("0", "13", cost=1000, delay=0.2, bw=10000, directed=True)
+        self.add_link_name("0", "14", cost=1000, delay=0.2, bw=10000, directed=True)
     
     def dijkstra_computed(self):
         # Demand from 11 to 4
@@ -66,10 +66,10 @@ class SimpleJointHand(Topo):
         self.add_command("13", "ip -6 rule add to {4/} iif lo table 1")
         self.add_command("14", "ip -6 rule add to {4/} iif lo table 1")
         self.add_command("4", "nuttcp -6 -S")
-        self.add_command("11", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 11 nuttcp -T300 -i1 -R10000 -N32 {4} \>\>flow_11-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_11-4.txt\; done\\\" | at now+2min')
-        self.add_command("12", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 12 nuttcp -T300 -i1 -R10000 -N32 {4} \>\>flow_12-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_12-4.txt\; done\\\" | at now+2min')
-        self.add_command("13", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 13 nuttcp -T300 -i1 -R10000 -N32 {4} \>\>flow_13-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_13-4.txt\; done\\\" | at now+2min')
-        self.add_command("14", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 14 nuttcp -T300 -i1 -R10000 -N32 {4} \>\>flow_14-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_14-4.txt\; done\\\" | at now+2min')
+        self.add_command("11", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 11 nuttcp -T150 -i1 -R10000 -N16 {4} \>\>flow_11-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_11-4.txt\; done\\\" | at now+2min')
+        self.add_command("12", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 12 nuttcp -T150 -i1 -R10000 -N16 {4} \>\>flow_12-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_12-4.txt\; done\\\" | at now+2min')
+        self.add_command("13", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 13 nuttcp -T150 -i1 -R10000 -N16 {4} \>\>flow_13-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_13-4.txt\; done\\\" | at now+2min')
+        self.add_command("14", 'echo bash -c \\\"START=\\\\\$SECONDS\; while \! ip netns exec 14 nuttcp -T150 -i1 -R10000 -N16 {4} \>\>flow_14-4.txt 2\>\&1 \; do sleep 1\; echo RTY\: \\\\\$SECONDS \>\>flow_14-4.txt\; done\\\" | at now+2min')
 
         self.enable_throughput()
         self.add_command("0", "sysctl net.ipv6.fib_multipath_hash_policy=1")
@@ -82,5 +82,5 @@ class SimpleJointHand(Topo):
         self.add_command("13", "sysctl net.ipv6.fib_multipath_hash_policy=1")
         self.add_command("14", "sysctl net.ipv6.fib_multipath_hash_policy=1")
 
-topos = {'SimpleJointHand': (lambda: SimpleJointHand())}
+topos = {'Joint': (lambda: Joint())}
 

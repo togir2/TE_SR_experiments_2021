@@ -7,18 +7,21 @@ from sys import stderr, argv
 # Factors for align the comma values of the JSON file
 # Please note, that CAPACITY and DEMAND are both in KB.
 WEIGHT_FACTOR   =   1000
-CAPACITY_FACTOR = 10000
+CAPACITY_FACTOR = 1000000000000
 DEMAND_FACTOR   = 10000
 # Please note: CAPACITY_FACTOR and DEMAND_FACTOR should ALWAYS be the same value!!!
 if CAPACITY_FACTOR != DEMAND_FACTOR:
     stderr.write("WARNING: CAPACITY_FACTOR does not match DEMAND_FACTOR!\n")
 
 # Number of streams that are started. These streams are hashed individually.
-NSTREAMS =  16 # parallel streams
-TIME     = 150 # seconds
+NSTREAMS =  32 # parallel streams
+TIME     = 300 # seconds
+
+# Please note:
+# The evaluation code was moved to a bash script.
 
 filename = "/dev/stdin"
-topo_name = "TestTopo"
+topo_name = "Thomas"
 if len(argv) >= 2:
     filename = argv[1]
 if len(argv) >= 3:
@@ -53,14 +56,12 @@ for node in data["demands"]:
 destination_nodes = list(set(destination_nodes))
 source_nodes = list(set(source_nodes))
 
-# Add the nodes
 for n in nodes:
     output += \
 f"""\
         self.add_node("{n}")
 """
 
-# Set the links between the nodes
 for edge in data["links"]:
     output += \
 f"""\
@@ -116,7 +117,6 @@ output += """
         self.enable_throughput()
 """
 
-# Use L4 hash
 for n in nodes:
     output += f"""\
         self.add_command("{n}", "sysctl net.ipv6.fib_multipath_hash_policy=1")

@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# This file is part of our extended version of Nanonet. It is used to measure the throughput of interfaces.
-
 import json
 import subprocess
 import sys
