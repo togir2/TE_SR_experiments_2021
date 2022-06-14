@@ -59,7 +59,10 @@ def box_plot_all_top(df_plot, x_label="Model\n", y_label="\nMax. Normalized Link
 	#plt.savefig(file_name.replace(" ", ""), bbox_inches="tight", format='pdf')
 	#plt.close()
 	#print(file_name)
-	plt.yticks([0,1],['Joint','Weights'])
+	plt.yticks([0,1],[
+		#'Joint',
+		'Weights',
+		'Random'])
 	plt.tight_layout()
 	plt.grid()
 	plt.show()
@@ -71,17 +74,27 @@ def read_csv_data(filename : str, filter_filename : str):
 		csvreader = csv.reader(csvfile, delimiter=';')
 		return list(map( lambda row: float(row[2]) , filter( lambda row: row[1].strip() == filter_filename, csvreader ) ))
 
-data_joint   = read_csv_data( CSV_FILENAME, "Joint.topo.sh")
+#data_joint   = read_csv_data( CSV_FILENAME, "Joint.topo.sh")
 data_weights = read_csv_data( CSV_FILENAME, "Weights.topo.sh")
-
-data_all = [data_joint, data_weights]
+data_random = read_csv_data( CSV_FILENAME, "random.topo.sh")
+data_all = [
+	#data_joint, 
+	data_weights,
+	data_random
+	]
 
 box_plot_all_top(data_all)
 
 # Statistical data printed to stdout
-print("JOINT Median: ", statistics.median(data_joint))
-print("WEIGHTS Median: ", statistics.median(data_weights))
-print("JOINT Minimum: ", min(data_joint))
+print("RANDOM Median: ", statistics.median(data_random))
+print("RANDOM Minimum: ", min(data_random))
+print("RANDOM Maximum: ", max(data_random))
+
 print("WEIGHTS Minimum: ", min(data_weights))
-print("JOINT Maximum: ", max(data_joint))
+print("WEIGHTS Median: ", statistics.median(data_weights))
 print("WEIGHTS Maximum: ", max(data_weights))
+
+#print("JOINT Minimum: ", min(data_joint))
+#print("JOINT Median: ", statistics.median(data_joint))
+#print("JOINT Maximum: ", max(data_joint))
+
