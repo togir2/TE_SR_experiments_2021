@@ -56,16 +56,19 @@ def box_plot_all_top(df_plot, x_label="Model\n", y_label="\nMax. Normalized Link
 	for y_line in x_grid_lines:
 		y_line.set_color('white')
 	plt.xticks(rotation=0)
-	#plt.savefig(file_name.replace(" ", ""), bbox_inches="tight", format='pdf')
+	file_name = "boxplot.pdf"
+	plt.savefig(file_name.replace(" ", ""), bbox_inches="tight", format='pdf')
 	#plt.close()
-	#print(file_name)
+	print(file_name)
 	plt.yticks([0,1],[
 		#'Joint',
 		'Weights',
-		'Random'])
+		'Random'
+        'iwp'])
 	plt.tight_layout()
 	plt.grid()
-	plt.show()
+	#plt.show()
+	plt.close()
 	return
 
 # Read the CSV file and filter for a test set (e.g. only JOINT tests)
@@ -77,10 +80,12 @@ def read_csv_data(filename : str, filter_filename : str):
 #data_joint   = read_csv_data( CSV_FILENAME, "Joint.topo.sh")
 data_weights = read_csv_data( CSV_FILENAME, "Weights.topo.sh")
 data_random = read_csv_data( CSV_FILENAME, "random.topo.sh")
+data_ipw = read_csv_data( CSV_FILENAME, "ipw.topo.sh")
 data_all = [
 	#data_joint, 
 	data_weights,
-	data_random
+	data_random,
+        data_ipw
 	]
 
 box_plot_all_top(data_all)
@@ -89,6 +94,10 @@ box_plot_all_top(data_all)
 print("RANDOM Median: ", statistics.median(data_random))
 print("RANDOM Minimum: ", min(data_random))
 print("RANDOM Maximum: ", max(data_random))
+
+print("IPW Median: ", statistics.median(data_ipw))
+print("IPW Minimum: ", min(data_ipw))
+print("IPW Maximum: ", max(data_ipw))
 
 print("WEIGHTS Minimum: ", min(data_weights))
 print("WEIGHTS Median: ", statistics.median(data_weights))
