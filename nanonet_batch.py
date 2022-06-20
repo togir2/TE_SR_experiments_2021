@@ -15,7 +15,7 @@ class Tests:
 		# Names of the script files and the JSON files
 		self.TESTFILES = [
 		'dfs.topo.sh',
-		'dfs_weight.topo.sh',
+		#'dfs_weight.topo.sh',
 		#'Joint.topo.sh', 
 		'Weights.topo.sh', 
 		#'random2.topo.sh',
@@ -25,7 +25,7 @@ class Tests:
 		self.JSON_FILES = [
 		#'joint.json',
 		'dfs.json',
-		'dfs_weight.json'
+		#'dfs_weight.json',
 		'weights.json', 
 		#'test2.json',
 		#'random2.json',
