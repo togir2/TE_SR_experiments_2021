@@ -64,7 +64,8 @@ def box_plot_all_top(df_plot, x_label="Model\n", y_label="\nMax. Normalized Link
 		#'Joint',
 		'Weights',
 		'Random'
-        'iwp'])
+		'iwp',
+ 		'dfs'])
 	plt.tight_layout()
 	plt.grid()
 	#plt.show()
@@ -81,11 +82,13 @@ def read_csv_data(filename : str, filter_filename : str):
 data_weights = read_csv_data( CSV_FILENAME, "Weights.topo.sh")
 data_random = read_csv_data( CSV_FILENAME, "random.topo.sh")
 data_ipw = read_csv_data( CSV_FILENAME, "ipw.topo.sh")
+data_dfs = read_csv_data( CSV_FILENAME, "dfs.topo.sh")
 data_all = [
 	#data_joint, 
 	data_weights,
 	data_random,
-        data_ipw
+        data_ipw,
+	data_dfs
 	]
 
 box_plot_all_top(data_all)
@@ -94,6 +97,10 @@ box_plot_all_top(data_all)
 print("RANDOM Median: ", statistics.median(data_random))
 print("RANDOM Minimum: ", min(data_random))
 print("RANDOM Maximum: ", max(data_random))
+
+print("DFS Median: ", statistics.median(data_dfs))
+print("DFS Minimum: ", min(data_iwp))
+print("DFS Maximum: "), max(data_iwp))
 
 print("IPW Median: ", statistics.median(data_ipw))
 print("IPW Minimum: ", min(data_ipw))

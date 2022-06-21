@@ -13,20 +13,24 @@ class Tests:
 	def __init__(self):
 		# TODO (eventually): DEFINE PARAMETERS HERE!
 		# Names of the script files and the JSON files
-		self.TESTFILES = [ 
+		self.TESTFILES = [
+		'dfs.topo.sh',
+		#'dfs_weight.topo.sh',
 		#'Joint.topo.sh', 
 		'Weights.topo.sh', 
 		#'random2.topo.sh',
 		'random.topo.sh',
-        'ipw.topo.sh',
+		'ipw.topo.sh',
 		]
 		self.JSON_FILES = [
-		#'joint.json', 
+		#'joint.json',
+		'dfs.json',
+		#'dfs_weight.json',
 		'weights.json', 
 		#'test2.json',
 		#'random2.json',
 		'random.json',
-        'ipw.json',
+		'ipw.json',
 		]
 		# ID of the first test.
 		# This number is used in the CSV file for identification and in the filename.

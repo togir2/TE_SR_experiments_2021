@@ -112,8 +112,20 @@ This provides the bash script.
 
 6. Execute the bash script. See the section above, "Run the test scripts directly", for this.
 
-<p float="left">
-  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_available_v1_1.png" width="150" /></a>
-  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_evaluated_functional_v1_1.png" width="150" /></a>
-  <a href="https://www.acm.org/publications/policies/artifact-review-and-badging-current"><img src="imgs/artifacts_evaluated_reusable_v1_1.png" width="150" /></a>
-</p>
+## Replicate our Work
+You can use our prepared VM-Image to run the expirements. You can download it here: https://tu-dortmund.sciebo.de/s/eN5SGRc3DwJkBZC .
+The username to login is "ubuntu" and the passwort is "123456".
+To run the nanonet_batch.py you need to login as user root. You can login as root with the command: "sudo su".
+The project is located at "/home/ubuntu/TE_SR_experiments_2021/"
+
+Alternative you can clone this repositiory, set the exectuable bit for all the "topo.sh" files with 
+```
+chmod +x *.topo.sh
+```
+
+Then you can run the nanonet_batch.py:
+
+```
+python3 nanonet_batch.py
+python3 gen_boxplot.py
+```
