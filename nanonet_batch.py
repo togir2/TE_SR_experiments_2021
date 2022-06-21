@@ -20,7 +20,7 @@ class Tests:
 		'Weights.topo.sh', 
 		#'random2.topo.sh',
 		'random.topo.sh',
-        'ipw.topo.sh',
+		'ipw.topo.sh',
 		]
 		self.JSON_FILES = [
 		#'joint.json',
@@ -30,7 +30,7 @@ class Tests:
 		#'test2.json',
 		#'random2.json',
 		'random.json',
-        'ipw.json',
+		'ipw.json',
 		]
 		# ID of the first test.
 		# This number is used in the CSV file for identification and in the filename.
